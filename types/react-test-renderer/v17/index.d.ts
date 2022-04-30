@@ -29,17 +29,17 @@ export interface ReactTestRendererTree extends ReactTestRendererJSON {
 }
 export interface ReactTestInstance {
     instance: any;
-    type: ElementType;
+    type: ElementType | string;
     props: { [propName: string]: any };
     parent: null | ReactTestInstance;
     children: Array<ReactTestInstance | string>;
 
     find(predicate: (node: ReactTestInstance) => boolean): ReactTestInstance;
-    findByType(type: ElementType): ReactTestInstance;
+    findByType(type: ElementType | string): ReactTestInstance;
     findByProps(props: { [propName: string]: any }): ReactTestInstance;
 
     findAll(predicate: (node: ReactTestInstance) => boolean, options?: { deep: boolean }): ReactTestInstance[];
-    findAllByType(type: ElementType, options?: { deep: boolean }): ReactTestInstance[];
+    findAllByType(type: ElementType | string, options?: { deep: boolean }): ReactTestInstance[];
     findAllByProps(props: { [propName: string]: any }, options?: { deep: boolean }): ReactTestInstance[];
 }
 export interface ReactTestRenderer {
